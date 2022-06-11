@@ -1,0 +1,27 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Tracker {
+    id Int @id @default(autoincrement())
+    userId String
+    description String?
+    startTime DateTime @default(now())
+    endTime DateTime
+    isCompleted Boolean
+}
+
+model workerTimes{
+    id Int @id @default(autoincrement())
+    userId String
+    workedTime Int
+    createdAt String
+}
