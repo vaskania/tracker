@@ -40,18 +40,18 @@ export class TrackerService {
         const day = new Date().getDate()
         const month = new Date().getMonth()
         const year = new Date().getFullYear()
-        let hasWorkToday = 0;
+        let hasWorkedToday = 0;
         for (let work of allWorks) {
             const [workYear, workMonth, workDay] = work.createdAt.split(':')
             if (+workYear === year &&
                 +workMonth === month &&
                 +workDay === day
             ) {
-                hasWorkToday = 1;
+                hasWorkedToday = 1;
                 break;
             }
         }
-        if (hasWorkToday === 0) {
+        if (hasWorkedToday === 0) {
             await this.prismaService.workerTimes.create({
                 data: {
                     userId,
